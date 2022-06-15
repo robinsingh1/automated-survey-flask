@@ -25,6 +25,7 @@ def voice_twiml(question):
     response.say(VOICE_INSTRUCTIONS[question.kind])
 
     action_url = url_for('answer', question_id=question.id)
+    
     transcription_url = url_for('answer_transcription', question_id=question.id)
     if question.kind == Question.TEXT:
         response.record(action=action_url, transcribe_callback=transcription_url)
